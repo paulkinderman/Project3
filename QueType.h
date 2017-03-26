@@ -22,7 +22,7 @@ class QueType
     // Parameterized class constructor.
     ~QueType();
     // Class destructor.
-    QueType(const QueType& anotherQue);
+    QueType(const QueType<ItemType>& anotherQue);
     // Copy constructor
     void MakeEmpty();
     // Function: Initializes the queue to an empty state.

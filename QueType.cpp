@@ -2,28 +2,29 @@
 #include <new>                     // For bad_alloc
 #include "QueType.h"
 
+template <class ItemType>
 struct NodeType
 {
   ItemType info;
-  NodeType* next;
+  NodeType<ItemType> * next;
 };
 
 
-
-QueType::QueType()          // Class constructor.
+template <class ItemType>
+QueType<ItemType>::QueType()          // Class constructor.
 // Post:  front and rear are set to NULL.
 {
   front = NULL;
   rear = NULL;
 }
 
-
-void QueType::MakeEmpty()
+template <class ItemType>
+void QueType<ItemType>::MakeEmpty()
 // Post: Queue is empty; all elements have been deallocated.
 {
-  NodeType* tempPtr;
+  NodeType<ItemType>* tempPtr;
 
-    while (front != NULL)
+  while (front != NULL)
   {
     tempPtr = front;
     front = front->next;
@@ -32,21 +33,22 @@ void QueType::MakeEmpty()
   rear = NULL;
 }
 
-          // Class destructor.
-QueType::~QueType()
+// Class destructor.
+template <class ItemType>
+QueType<ItemType>::~QueType()
 {
   MakeEmpty();
 }
 
-
-bool QueType::IsFull() const
+template <class ItemType>
+bool QueType<ItemType>::IsFull() const
 // Returns true if there is no room for another ItemType 
 //  on the free store; false otherwise.
 {
-  NodeType* location;
+  NodeType<ItemType> * location;
   try
   {
-    location = new NodeType;
+    location = new NodeType<ItemType>;
     delete location;
     return false;
   }
@@ -56,15 +58,15 @@ bool QueType::IsFull() const
   }
 }
 
-
-bool QueType::IsEmpty() const
+template <class ItemType>
+bool QueType<ItemType>::IsEmpty() const
 // Returns true if there are no elements on the queue; false otherwise.
 {
   return (front == NULL);
 }
 
-
-void QueType::Enqueue(ItemType newItem)
+template <class ItemType>
+void QueType<ItemType>::Enqueue(ItemType newItem)
 // Adds newItem to the rear of the queue.
 // Pre:  Queue has been initialized.
 // Post: If (queue is not full) newItem is at the rear of the queue;
@@ -75,9 +77,9 @@ void QueType::Enqueue(ItemType newItem)
     throw FullQueue();
   else
   {
-    NodeType* newNode;
+    NodeType<ItemType>* newNode;
 
-    newNode = new NodeType;
+    newNode = new NodeType<ItemType>;
     newNode->info = newItem;
     newNode->next = NULL;
     if (rear == NULL)
@@ -88,8 +90,8 @@ void QueType::Enqueue(ItemType newItem)
   }
 }
 
-
-void QueType::Dequeue(ItemType& item)
+template <class ItemType>
+void QueType<ItemType>::Dequeue(ItemType& item)
 // Removes front item from the queue and returns it in item.
 // Pre:  Queue has been initialized and is not empty.
 // Post: If (queue is not empty) the front of the queue has been 
@@ -100,7 +102,7 @@ void QueType::Dequeue(ItemType& item)
     throw EmptyQueue();
   else
   {
-    NodeType* tempPtr;
+    NodeType<ItemType>* tempPtr;
 
     tempPtr = front;
     item = front->info;
@@ -111,23 +113,23 @@ void QueType::Dequeue(ItemType& item)
   }
 }
 
-QueType::QueType
-  (const QueType& anotherQue)
+template <class ItemType>
+QueType<ItemType>::QueType(const QueType<ItemType>& anotherQue)
 {
-  NodeType* ptr1;
-  NodeType* ptr2;
+  NodeType<ItemType> * ptr1;
+  NodeType<ItemType> * ptr2;
   
   if (anotherQue.front == NULL)
     front = NULL;
   else
   {
-    front = new NodeType;
+    front = new NodeType<ItemType>;
     front->info = anotherQue.front->info;
     ptr1 = anotherQue.front->next;
     ptr2 = front;
     while (ptr1 != NULL)
     {
-      ptr2->next = new NodeType;
+      ptr2->next = new NodeType<ItemType>;
       ptr2 = ptr2->next;
       ptr2->info = ptr1->info;
       ptr1 = ptr1->next;
@@ -136,3 +138,5 @@ QueType::QueType
     rear = ptr2;
   }    
 }
+
+template class QueType<int>;

@@ -37,9 +37,6 @@ bool TreeType<ItemType>::IsEmpty() const
 }
 
 template <class ItemType>
-int CountNodes(TreeNode<ItemType> * tree);
-
-template <class ItemType>
 int TreeType<ItemType>::GetLength() const
 // Calls recursive function CountNodes to count the 
 // nodes in the tree.
@@ -58,9 +55,6 @@ int CountNodes(TreeNode<ItemType>* tree)
 }
 
 template <class ItemType>
-void Retrieve(TreeNode<ItemType>* tree, ItemType& item, bool& found);
-
-template <class ItemType>
 ItemType TreeType<ItemType>::GetItem(ItemType item, bool& found)
 // Calls recursive function Retrieve to search the tree for item.
 {
@@ -69,8 +63,7 @@ ItemType TreeType<ItemType>::GetItem(ItemType item, bool& found)
 }
 
 template <class ItemType>
-void Retrieve(TreeNode<ItemType>* tree, 
-     ItemType& item, bool& found)
+void Retrieve(TreeNode<ItemType>* tree, ItemType& item, bool& found)
 // Recursively searches tree for item.
 // Post: If there is an element someItem whose key matches item's,
 //       found is true and item is set to a copy of someItem; 
@@ -88,9 +81,6 @@ void Retrieve(TreeNode<ItemType>* tree,
     found = true;
    }
 } 
-
-template <class ItemType>
-void Insert(TreeNode<ItemType>*& tree, ItemType item);
 
 template <class ItemType>
 void TreeType<ItemType>::PutItem(ItemType item)
@@ -149,9 +139,6 @@ void Delete(TreeNode<ItemType>*& tree, ItemType item)
 }   
 
 template <class ItemType>
-void GetPredecessor(TreeNode<ItemType>* tree, ItemType& data);
-
-template <class ItemType>
 void DeleteNode(TreeNode<ItemType>*& tree)
 // Deletes the node pointed to by tree.
 // Post: The user's data in the node pointed to by tree is no 
@@ -192,22 +179,25 @@ void GetPredecessor(TreeNode<ItemType>* tree, ItemType& data)
 }
 
 template <class ItemType>
-void PrintTree(TreeNode<ItemType>* tree) 
+string PrintTree(TreeNode<ItemType>* tree) 
 // Prints info member of items in tree in sorted order on screen.
 {
+  string str = "";
   if (tree != NULL)
   {
     PrintTree(tree->left);   // Print left subtree.
-    cout << tree->info<<"  ";
+    str += tree->info;
+    str += "  ";
     PrintTree(tree->right);  // Print right subtree.
   }
+  return str;
 }
 
 template <class ItemType>
-void TreeType<ItemType>::Print() const
+string TreeType<ItemType>::Print() const
 // Calls recursive function Print to print items in the tree.
 {
-  PrintTree(root);
+  return PrintTree(root);
 }
 
 template <class ItemType>
@@ -286,19 +276,6 @@ void CopyTree(TreeNode<ItemType>*& copy, const TreeNode<ItemType>* originalTree)
     CopyTree(copy->right, originalTree->right);
   }
 }
-// Function prototypes for auxiliary functions.
-
-template <class ItemType>
-void PreOrder(TreeNode<ItemType>*, QueType<ItemType>&);
-// Enqueues tree items in preorder.
-
-template <class ItemType>
-void InOrder(TreeNode<ItemType>*, QueType<ItemType>&);
-// Enqueues tree items in inorder.
-
-template <class ItemType>
-void PostOrder(TreeNode<ItemType>*, QueType<ItemType>&);
-// Enqueues tree items in postorder.
 
 template <class ItemType>
 void TreeType<ItemType>::ResetTree(OrderType order)
@@ -320,8 +297,7 @@ void TreeType<ItemType>::ResetTree(OrderType order)
 }
 
 template <class ItemType>
-void PreOrder(TreeNode<ItemType>* tree, 
-     QueType<ItemType>& preQue)
+void PreOrder(TreeNode<ItemType>* tree, QueType<ItemType>& preQue)
 // Post: preQue contains the tree items in preorder.
 {
   if (tree != NULL)
@@ -333,8 +309,7 @@ void PreOrder(TreeNode<ItemType>* tree,
 }
 
 template <class ItemType>
-void InOrder(TreeNode<ItemType>* tree, 
-     QueType<ItemType>& inQue)
+void InOrder(TreeNode<ItemType>* tree, QueType<ItemType>& inQue)
 // Post: inQue contains the tree items in inorder.
 {
   if (tree != NULL)
@@ -346,8 +321,7 @@ void InOrder(TreeNode<ItemType>* tree,
 }
 
 template <class ItemType>
-void PostOrder(TreeNode<ItemType>* tree, 
-     QueType<ItemType>& postQue)
+void PostOrder(TreeNode<ItemType>* tree, QueType<ItemType>& postQue)
 // Post: postQue contains the tree items in postorder.
 {
   if (tree != NULL)
@@ -385,5 +359,4 @@ ItemType TreeType<ItemType>::GetNextItem(OrderType order, bool& finished)
   return item;
 }
 
-
-
+ template class TreeType<int>;

@@ -21,7 +21,7 @@ int main()
   
   char item;
   string orderItem;
-  TreeType tree;
+  TreeType<int> tree;
   OrderType order;
   bool found;
   bool finished;
@@ -79,7 +79,7 @@ int main()
   
     else if (command == "PrintTree")
     {
-      tree.Print(outFile);
+      outFile << tree.Print();
       outFile << endl;
     }  
     else if (command == "ResetTree")
