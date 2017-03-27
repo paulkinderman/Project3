@@ -73,10 +73,11 @@ int main()
     else if (command == "GetLength")  
       outFile << "Number of nodes is " << tree.GetLength() << endl;
     else if (command == "IsEmpty")
+    {
       if (tree.IsEmpty())
         outFile << "Tree is empty." << endl;
       else outFile << "Tree is not empty."  << endl;  
-  
+    }
     else if (command == "PrintTree")
     {
       outFile << tree.Print();
@@ -115,7 +116,11 @@ int main()
       tree.MakeEmpty();
       outFile << "Tree has been made empty." << endl;
     }  
-	else cout << " Command not recognized." << endl;
+    else if (command == "PreOrderPrint")
+      outFile << tree.PreOrderPrint() << endl;
+    else if (command == "PostOrderPrint")
+      outFile << tree.PostOrderPrint() << endl;
+	  else cout << " Command not recognized." << endl;
     numCommands++;
     cout <<  " Command is completed."  << endl;
     inFile >> command;

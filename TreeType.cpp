@@ -185,10 +185,10 @@ string PrintTree(TreeNode<ItemType>* tree)
   string str = "";
   if (tree != NULL)
   {
-    PrintTree(tree->left);   // Print left subtree.
+    str += PrintTree(tree->left);   // Print left subtree.
     str += tree->info;
     str += "  ";
-    PrintTree(tree->right);  // Print right subtree.
+    str += PrintTree(tree->right);  // Print right subtree.
   }
   return str;
 }
@@ -297,7 +297,7 @@ void TreeType<ItemType>::ResetTree(OrderType order)
 }
 
 template <class ItemType>
-void PreOrder(TreeNode<ItemType>* tree, QueType<ItemType>& preQue)
+void TreeType<ItemType>::PreOrder(TreeNode<ItemType>* tree, QueType<ItemType>& preQue)
 // Post: preQue contains the tree items in preorder.
 {
   if (tree != NULL)
@@ -309,7 +309,7 @@ void PreOrder(TreeNode<ItemType>* tree, QueType<ItemType>& preQue)
 }
 
 template <class ItemType>
-void InOrder(TreeNode<ItemType>* tree, QueType<ItemType>& inQue)
+void TreeType<ItemType>::InOrder(TreeNode<ItemType>* tree, QueType<ItemType>& inQue)
 // Post: inQue contains the tree items in inorder.
 {
   if (tree != NULL)
@@ -321,7 +321,7 @@ void InOrder(TreeNode<ItemType>* tree, QueType<ItemType>& inQue)
 }
 
 template <class ItemType>
-void PostOrder(TreeNode<ItemType>* tree, QueType<ItemType>& postQue)
+void TreeType<ItemType>::PostOrder(TreeNode<ItemType>* tree, QueType<ItemType>& postQue)
 // Post: postQue contains the tree items in postorder.
 {
   if (tree != NULL)
@@ -359,4 +359,50 @@ ItemType TreeType<ItemType>::GetNextItem(OrderType order, bool& finished)
   return item;
 }
 
- template class TreeType<int>;
+template <class ItemType>
+string TreeType<ItemType>::PreOrderPrint()
+{
+  string str = "";
+  PreOrder(root, preQue);
+  ItemType item;
+  while (!preQue.IsEmpty())
+  {
+    preQue.Dequeue(item);
+    str += item;
+    str += " ";
+  }
+  return str;
+}
+
+template <class ItemType>
+string TreeType<ItemType>::PostOrderPrint()
+{
+  string str = "";
+  PostOrder(root, postQue);
+  ItemType item;
+  while (!postQue.IsEmpty())
+  {
+    postQue.Dequeue(item);
+    str += item;
+    str += " ";
+  }
+  return str;
+}
+
+template <class ItemType>
+string TreeType<ItemType>::InOrderPrint()
+{
+  string str = "";
+  InOrder(root, inQue);
+  ItemType item;
+  while (!inQue.IsEmpty())
+  {
+    inQue.Dequeue(item);
+    str += item;
+    str += " ";
+  }
+  return str;
+}
+
+template class TreeType<int>;
+

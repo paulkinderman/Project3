@@ -15,8 +15,7 @@ public:
   TreeType();                     // constructor
   ~TreeType();                    // destructor
   TreeType(const TreeType<ItemType>& originalTree); 
-  void operator=(const TreeType<ItemType>& originalTree);
-  // copy constructor
+  void operator=(const TreeType<ItemType>& originalTree); // copy constructor
   void MakeEmpty();
   bool IsEmpty() const;
   bool IsFull() const;
@@ -26,7 +25,13 @@ public:
   void DeleteItem(ItemType item);
   void ResetTree(OrderType order); 
   ItemType GetNextItem(OrderType order, bool& finished);
+  void PreOrder(TreeNode<ItemType> * tree, QueType<ItemType> & que);
+  void PostOrder(TreeNode<ItemType> * tree, QueType<ItemType> & que);
+  void InOrder(TreeNode<ItemType> * tree, QueType<ItemType> & que);
   std::string Print() const;
+  std::string PreOrderPrint();
+  std::string PostOrderPrint();
+  std::string InOrderPrint();
 private:
   TreeNode<ItemType> * root;
   QueType<ItemType> preQue;
