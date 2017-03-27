@@ -32,10 +32,12 @@ public:
   std::string PreOrderPrint();
   std::string PostOrderPrint();
   std::string InOrderPrint();
+  std::string Ancestors(ItemType value);
 private:
   TreeNode<ItemType> * root;
   QueType<ItemType> preQue;
   QueType<ItemType> inQue;
   QueType<ItemType> postQue;
+  TreeNode<ItemType> * PtrToSuccessor(TreeNode<ItemType>*& tree);
 };
 

@@ -236,10 +236,6 @@ void TreeType<ItemType>::MakeEmpty()
 }
 
 template <class ItemType>
-void CopyTree(TreeNode<ItemType>*& copy, 
-     const TreeNode<ItemType>* originalTree);
-
-template <class ItemType>
 TreeType<ItemType>::TreeType(const TreeType<ItemType>& originalTree)
 // Calls recursive function CopyTree to copy originalTree 
 //  into root.
@@ -401,6 +397,46 @@ string TreeType<ItemType>::InOrderPrint()
     str += item;
     str += " ";
   }
+  return str;
+}
+
+template <class ItemType>
+TreeNode<ItemType> * TreeType<ItemType>::PtrToSuccessor(TreeNode<ItemType> *& tree)
+{
+  TreeNode<ItemType>* location = tree->left;
+  while (location->left!=NULL)
+  {
+    location = tree->left;
+  }
+  return location;
+}
+
+template <class ItemType>
+string TreeType<ItemType>::Ancestors(ItemType  value)
+{
+  string str = "";
+  TreeNode<ItemType> * location = root;
+  while (location->info != value || location != NULL)
+  {
+    if (location->info>value)
+    {
+      str += location->info;
+      str+= " ";
+      location = location->left;
+    }
+    else if (location->info<value)
+    {
+      str += location->info;
+      str+= " ";
+      location = location->right;
+    }
+    else if (location->info == value)
+        break;
+  }
+  if (location==NULL)
+    str = "This item is not in the tree";
+  else if (str.length() == 0)
+    str = "This item has no ancestors";
   return str;
 }
 

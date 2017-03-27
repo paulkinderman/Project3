@@ -11,13 +11,6 @@ Project Requirements:
 
 	PT 2) Modify  the DeleteNodefunction  so that  it  uses  the immediate  successor  (rather  than  the predecessor)  of the  value  to be deleted  in  the case of deleting  a node with  two children.  You should  callPtrToSuccessor() function  that  you  defined  in  part 3.
 
-5.[10 Points]
-	Add to TreeType the iterative member  function Ancestors that prints the  ancestors of a given  node whose info member  contains value. Do not print value. 
-		
-		//Precondition:  Tree is  initialized
-		//Postcondition:  The  ancestors  of the  node whose  info member  is  value have  been printed.
-		void TreeType<ItemType>::Ancestors(ItemType  value)
-
 6.[15Points]
 	Add to TreeType a public member  function MirrorImage that creates  and returns  a mirror image  of the  tree.
 	The function MirrorImage calls a recursive function Mirror that  returns  the mirror  image  of the original  tree as follows: 

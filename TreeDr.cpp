@@ -120,6 +120,13 @@ int main()
       outFile << tree.PreOrderPrint() << endl;
     else if (command == "PostOrderPrint")
       outFile << tree.PostOrderPrint() << endl;
+    else if (command == "InOrderPrint")
+      outFile << tree.InOrderPrint() << endl;
+    else if (command == "Ancestors")
+    {
+      inFile >> item;
+      outFile << tree.Ancestors(item) << endl;
+    }
 	  else cout << " Command not recognized." << endl;
     numCommands++;
     cout <<  " Command is completed."  << endl;
