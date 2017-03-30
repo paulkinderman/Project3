@@ -230,6 +230,7 @@ void Destroy(TreeNode<ItemType>*& tree)
 
 template <class ItemType>
 void TreeType<ItemType>::MakeEmpty()
+// Makes the function empty
 {
   Destroy(root);
   root = NULL;
@@ -357,6 +358,7 @@ ItemType TreeType<ItemType>::GetNextItem(OrderType order, bool& finished)
 
 template <class ItemType>
 string TreeType<ItemType>::PreOrderPrint()
+// traverses and prints tree in preorder
 {
   string str = "";
   PreOrder(root, preQue);
@@ -372,6 +374,7 @@ string TreeType<ItemType>::PreOrderPrint()
 
 template <class ItemType>
 string TreeType<ItemType>::PostOrderPrint()
+// traverses and prints in postorder
 {
   string str = "";
   PostOrder(root, postQue);
@@ -387,6 +390,7 @@ string TreeType<ItemType>::PostOrderPrint()
 
 template <class ItemType>
 string TreeType<ItemType>::InOrderPrint()
+// traverses and prints in inorder
 {
   string str = "";
   InOrder(root, inQue);
@@ -402,6 +406,7 @@ string TreeType<ItemType>::InOrderPrint()
 
 template <class ItemType>
 TreeNode<ItemType> * TreeType<ItemType>::PtrToSuccessor(TreeNode<ItemType> *& tree)
+// returns a pointer to a successor node
 {
   TreeNode<ItemType>* location = tree->left;
   while (location->left!=NULL)
