@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include "TreeType.h"
 
 using namespace std;
@@ -402,6 +403,39 @@ string TreeType<ItemType>::InOrderPrint()
     str += " ";
   }
   return str;
+}
+
+template <class ItemType>
+void TreeType<ItemType>::LevelOrderPrint(){
+	Level(root);
+}
+
+template <class ItemType>
+void Level(TreeNode<ItemType> * tree){
+	queue <TreeNode<ItemType> * > que1;
+	if (tree == NULL){
+		return;
+	}
+	que1.push(tree);
+	while (true){
+		int nodes = que1.size();
+		if (nodes == 0){
+			break;
+		}
+		while (nodes > 0){
+			TreeNode<ItemType> * treeroot = que1.front();
+			cout << treeroot->info << " ";
+			que1.pop();
+			if (treeroot->left != NULL){
+				que1.push(treeroot->left);
+			}
+			if (treeroot->right != NULL){
+				que1.push(treeroot->right);
+			}
+			nodes--;
+		}
+		cout << endl;
+	}
 }
 
 template <class ItemType>

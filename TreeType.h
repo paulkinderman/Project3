@@ -32,6 +32,7 @@ public:
   std::string PreOrderPrint();
   std::string PostOrderPrint();
   std::string InOrderPrint();
+  void LevelOrderPrint();
   std::string Ancestors(ItemType value);
 private:
   TreeNode<ItemType> * root;

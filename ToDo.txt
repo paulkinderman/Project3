@@ -1,9 +1,6 @@
 CSCI2720 Project  3 
 Project Requirements:
 
-2.[10Points]
-	Add the a non-recursive member  functions: LevelOrderPrint() That  prints  the  tree level  by level.  
-
 4.[15 Points] (completed PT 1)
 	PT 1) Add a private  function PtrToSuccessor that  finds  the  node with  the smallest  key value  in  a tree, and returns  a pointer  to that  node.
 
