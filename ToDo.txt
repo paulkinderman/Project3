@@ -16,9 +16,6 @@ Project Requirements:
 		// Calls  recursive  function  Mirror.
 		// Post:  A tree that  is  the  mirror  image  the tree is  returned.
 
-7.[15Points]
-	Write  a client function MakeTree that creates a binary  search  tree from  the  elements in  a sorted list  of  integers.  Input parameter  to this  function  is  a sorted array.  (read the sorted array from  the  text  file  input.txt  see part 8 ). You  cannot  traverse  the  list  inserting  the elements  in  order, as that  would  produce  a tree that  has N levels.  You  must  create a tree with  at most  logv2N+ 1 levels.
-
 8.[10Points]
 	Test  your  implementation  using TreeDr.cpp.  This program must  display  a menu for  all  operations (you  can  use  and modify  the  attached  file  TreeDr.cpp).This program mustread all  input from  a text  file  called input.txt and  display output  on screen.
 
