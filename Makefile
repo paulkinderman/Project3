@@ -1,3 +1,5 @@
+run: ./TreeDr
+	
 all: TreeDr
 
 TreeDr: TreeDr.o TreeType.o QueType.o
