@@ -164,9 +164,9 @@ void DeleteNode(TreeNode<ItemType>*& tree)
   }
   else
   {
-    GetPredecessor(tree->left, data);
-    tree->info = data;
-    Delete(tree->left, data);  // Delete predecessor node.
+    TreeNode<ItemType> * successor = PtrToSuccessor(tree->right);
+    tree->info = successor->info;
+    Delete(tree->right, successor->info);  // Delete predecessor node.
   }
 }
 
@@ -439,7 +439,7 @@ void Level(TreeNode<ItemType> * tree){
 }
 
 template <class ItemType>
-TreeNode<ItemType> * TreeType<ItemType>::PtrToSuccessor(TreeNode<ItemType> *& tree)
+TreeNode<ItemType> * PtrToSuccessor(TreeNode<ItemType> * tree)
 // returns a pointer to a successor node
 {
   TreeNode<ItemType>* location = tree->left;

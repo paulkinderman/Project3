@@ -40,6 +40,6 @@ private:
   QueType<ItemType> preQue;
   QueType<ItemType> inQue;
   QueType<ItemType> postQue;
-  TreeNode<ItemType> * PtrToSuccessor(TreeNode<ItemType>*& tree);
+  TreeNode<ItemType> * PtrToSuccessor(TreeNode<ItemType> * tree);
 };
 
