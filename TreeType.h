@@ -34,6 +34,7 @@ public:
   std::string InOrderPrint();
   void LevelOrderPrint();
   std::string Ancestors(ItemType value);
+  TreeType<ItemType> MirrorImage();
 private:
   TreeNode<ItemType> * root;
   QueType<ItemType> preQue;

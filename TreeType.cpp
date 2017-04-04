@@ -479,5 +479,25 @@ string TreeType<ItemType>::Ancestors(ItemType  value)
   return str;
 }
 
+template <class ItemType>
+TreeType<ItemType> TreeType<ItemType>::MirrorImage(){
+  TreeType<ItemType> tree; 
+  Mirror(tree.root, root);
+  return tree;
+}
+
+template <class ItemType>
+void Mirror(TreeNode<ItemType>*& copy, const TreeNode<ItemType>* originalTree){
+  if (originalTree == NULL){
+  	copy = NULL;
+  }
+  else{
+  	copy = new TreeNode<ItemType>;
+  	copy->info = originalTree->info;
+  	Mirror(copy->left, originalTree->right);
+  	Mirror(copy->right, originalTree->left);
+  }
+}
+
 template class TreeType<int>;
 
